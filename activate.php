@@ -38,8 +38,14 @@ function crb_attach_theme_options() {
         ));
 }
 
-//front-end
+//front-end (template and css for footer )
 add_action( 'wp_footer', 'add_footer_template' );
+add_action('wp_enqueue_scripts', 'footer_css');
+
 function add_footer_template() {
-    include_once(dirname(__FILE__).'/footer-templates/footer-template-heni.php');
+    include_once(dirname(__FILE__).'/footer-templates/heni/footer-template-heni.php');
+}
+function footer_css()
+{
+    wp_enqueue_style('footer-template-style', plugins_url('/footer-templates/css/style.css', __FILE__ ), array(), null, 'all');
 }
